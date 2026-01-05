@@ -3,10 +3,16 @@
 body{background:#0b0b0b;color:#fff}
 
 /* ===== HEADER ===== */
-header{background:#000;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid gold;flex-wrap:wrap}
+header{background:#000;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
 header h1{color:gold;font-size:28px;margin-bottom:10px}
-nav a{color:#fff;margin-left:20px;text-decoration:none;font-weight:bold}
-nav a:hover{color:gold}
+nav{position:relative}
+.nav-list{display:flex;list-style:none}
+.nav-list li{margin-left:20px}
+.nav-list li a{color:#fff;text-decoration:none;font-weight:bold}
+.nav-list li a:hover{color:gold}
+
+/* MOBILE MENU TOGGLE */
+.menu-toggle{display:none;font-size:28px;color:gold;cursor:pointer}
 
 /* ===== HERO ===== */
 .hero{height:60vh;background:url("../images/stadium.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
@@ -32,15 +38,19 @@ th{color:gold}
 footer{background:#000;padding:20px;text-align:center;border-top:1px solid gold;color:#aaa}
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px){
+@media(max-width:768px){
     header{flex-direction:column;align-items:flex-start}
     nav a{margin:10px 0 0 0}
+    .menu-toggle{display:block}
+    .nav-list{flex-direction:column;background:#111;position:absolute;top:60px;right:0;width:200px;display:none;border:1px solid gold;border-radius:8px}
+    .nav-list.active{display:flex}
+    .nav-list li{margin:15px 0;text-align:center}
     .hero{height:40vh}
     .hero h2{font-size:32px}
     section{padding:30px}
-    table th, table td{padding:10px;font-size:14px}
+    table th,table td{padding:10px;font-size:14px}
 }
-@media (max-width: 480px){
+@media(max-width:480px){
     .hero h2{font-size:24px}
     .grid{grid-template-columns:1fr}
     section{padding:20px}
