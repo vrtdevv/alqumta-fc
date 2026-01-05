@@ -1,0 +1,32 @@
+/* ===== GENERAL ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0b0b0b;color:#fff}
+
+/* ===== HEADER ===== */
+header{background:#000;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid gold}
+header h1{color:gold}
+nav a{color:#fff;margin-left:20px;text-decoration:none;font-weight:bold}
+nav a:hover{color:gold}
+
+/* ===== HERO ===== */
+.hero{height:60vh;background:url("../images/stadium.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center}
+.hero h2{color:gold;font-size:48px;text-shadow:2px 2px #000}
+
+/* ===== SECTION ===== */
+section{padding:50px}
+section h2{color:gold;margin-bottom:30px}
+
+/* ===== GRID CARDS ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:#111;padding:20px;border-radius:10px;border:1px solid #222;transition:.3s}
+.card:hover{border-color:gold;transform:translateY(-5px)}
+.card h3{color:gold;margin-bottom:10px}
+.card p{color:#ccc}
+
+/* ===== TABLE ===== */
+table{width:100%;border-collapse:collapse}
+th,td{padding:15px;border-bottom:1px solid #222;text-align:left}
+th{color:gold}
+
+/* ===== FOOTER ===== */
+footer{background:#000;padding:20px;text-align:center;border-top:1px solid gold;color:#aaa}
