@@ -3,55 +3,68 @@
 body{background:#0b0b0b;color:#fff}
 
 /* ===== HEADER ===== */
-header{background:#000;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-header h1{color:gold;font-size:28px;margin-bottom:10px}
-nav{position:relative}
-.nav-list{display:flex;list-style:none}
-.nav-list li{margin-left:20px}
-.nav-list li a{color:#fff;text-decoration:none;font-weight:bold}
-.nav-list li a:hover{color:gold}
+header{background:#000;position:relative;width:100%;}
+.header-container{max-width:1200px;margin:0 auto;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{color:gold;font-size:32px;font-weight:bold}
 
-/* MOBILE MENU TOGGLE */
-.menu-toggle{display:none;font-size:28px;color:gold;cursor:pointer}
+/* NAVIGATION */
+.nav-list{display:flex;list-style:none;}
+.nav-list li{margin-left:25px;}
+.nav-list li a{color:#fff;text-decoration:none;font-weight:bold;padding:10px 5px;display:block;}
+.nav-list li a:hover{color:gold;}
+.menu-toggle{display:none;font-size:28px;color:gold;cursor:pointer;}
 
 /* ===== HERO ===== */
-.hero{height:60vh;background:url("../images/stadium.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-.hero h2{color:gold;font-size:48px;text-shadow:2px 2px #000}
-
-/* ===== SECTION ===== */
-section{padding:50px}
-section h2{color:gold;margin-bottom:30px;text-align:center}
+.hero{height:70vh;background:url("../images/stadium.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.hero h2{color:gold;font-size:48px;text-shadow:2px 2px #000;line-height:1.2}
 
 /* ===== GRID CARDS ===== */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-.card{background:#111;padding:20px;border-radius:10px;border:1px solid #222;transition:.3s}
-.card:hover{border-color:gold;transform:translateY(-5px)}
-.card h3{color:gold;margin-bottom:10px}
-.card p{color:#ccc}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:20px;}
+.card{background:#111;padding:20px;border-radius:10px;border:1px solid #222;transition:.3s;}
+.card:hover{border-color:gold;transform:translateY(-5px);}
+.card h3{color:gold;margin-bottom:10px;}
+.card p{color:#ccc;}
 
 /* ===== TABLE ===== */
-table{width:100%;border-collapse:collapse;margin-top:20px}
-th,td{padding:15px;border-bottom:1px solid #222;text-align:left}
-th{color:gold}
+table{width:100%;border-collapse:collapse;margin-top:20px;table-layout:auto;}
+th, td{padding:15px;border-bottom:1px solid #222;text-align:left;white-space:nowrap;}
+th{color:gold;}
 
 /* ===== FOOTER ===== */
-footer{background:#000;padding:20px;text-align:center;border-top:1px solid gold;color:#aaa}
+footer{background:#000;padding:20px;text-align:center;border-top:1px solid gold;color:#aaa;}
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .hero{height:60vh;}
+    .hero h2{font-size:36px;}
+}
 @media(max-width:768px){
-    header{flex-direction:column;align-items:flex-start}
-    nav a{margin:10px 0 0 0}
-    .menu-toggle{display:block}
-    .nav-list{flex-direction:column;background:#111;position:absolute;top:60px;right:0;width:200px;display:none;border:1px solid gold;border-radius:8px}
-    .nav-list.active{display:flex}
-    .nav-list li{margin:15px 0;text-align:center}
-    .hero{height:40vh}
-    .hero h2{font-size:32px}
-    section{padding:30px}
-    table th,table td{padding:10px;font-size:14px}
+    .menu-toggle{display:block;}
+    .nav-list{
+        flex-direction:column;
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:60%;
+        height:100%;
+        background:#111;
+        padding-top:60px;
+        transition:right 0.3s ease;
+        border-left:2px solid gold;
+        z-index:999;
+    }
+    .nav-list.active{right:0;}
+    .nav-list li{margin:20px 0;text-align:center;}
+    .hero{height:50vh;}
+    .hero h2{font-size:28px;}
+    .grid{grid-template-columns:1fr;}
+    table{display:block;overflow-x:auto;width:100%;}
+    th,td{padding:10px;font-size:14px;}
 }
 @media(max-width:480px){
-    .hero h2{font-size:24px}
-    .grid{grid-template-columns:1fr}
-    section{padding:20px}
+    .logo{font-size:24px;}
+    .hero{height:40vh;}
+    .hero h2{font-size:22px;}
+    table th, table td{font-size:12px;padding:8px;}
 }
