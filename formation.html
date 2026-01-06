@@ -7,8 +7,8 @@
 <style>
 /* ===== RESET ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial,sans-serif;background:#0b0b0b;color:#fff;line-height:1.6;}
-a{text-decoration:none;color:#fff;transition:0.3s;}
+body{background:#0b0b0b;color:#fff;line-height:1.4;}
+a{color:#fff;text-decoration:none;font-weight:bold;padding:10px 5px;display:block;transition:0.3s;}
 a:hover{color:gold;}
 
 /* ===== HEADER ===== */
@@ -69,27 +69,40 @@ main{padding:20px;text-align:center;}
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width:768px){
-  .menu-toggle{display:block;}
-  .nav-list{
-    width:100%;
-    max-height:0;
-    overflow:hidden;
-    flex-direction:column;
-    transition:max-height 0.3s ease-in;
-  }
-  .nav-list.active{max-height:500px;}
-  .nav-list li{margin:10px 0;}
-  #pitch{height:350px;}
-  .player img{width:40px;height:40px;}
-  .player-name{font-size:12px;}
-  .player-pos{font-size:10px;}
+@media(max-width:1024px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .hero{height:60vh;}
+    .hero h2{font-size:36px;}
 }
-@media (max-width:480px){
-  #pitch{height:250px;}
-  .player img{width:30px;height:30px;}
-  .player-name{font-size:10px;}
-  .player-pos{font-size:9px;}
+@media(max-width:768px){
+    .menu-toggle{display:block;}
+    .nav-list{
+        flex-direction:column;
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:60%;
+        height:100%;
+        background:#111;
+        padding-top:60px;
+        transition:right 0.3s ease;
+        border-left:2px solid gold;
+        z-index:999;
+    }
+    .nav-list.active{right:0;}
+    .nav-list li{margin:20px 0;text-align:center;}
+    .hero{height:50vh;}
+    .hero h2{font-size:28px;}
+    .grid{grid-template-columns:1fr;}
+    table{display:block;overflow-x:auto;width:100%;}
+    th,td{padding:10px;font-size:14px;}
+}
+@media(max-width:480px){
+    .logo{font-size:24px;}
+    .hero{height:40vh;}
+    .hero h2{font-size:22px;}
+    section{padding:20px;}
+    table th, table td{font-size:12px;padding:8px;}
 }
 </style>
 </head>
@@ -159,4 +172,5 @@ renderFormationPage();
 
 </body>
 </html>
+
 
