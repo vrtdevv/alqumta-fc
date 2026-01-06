@@ -112,6 +112,108 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
     text-align:center;
     padding:20px;
 }
+
+/* ===== PRO PLAYER CARD ===== */
+.player-card-pro{
+    background:#0e0e0e;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    transition:0.4s;
+}
+
+.player-card-pro:hover{
+    transform:translateY(-8px);
+}
+
+.player-img{
+    position:relative;
+    height:340px;
+    overflow:hidden;
+}
+
+.player-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* رقم اللاعب الكبير */
+.player-num{
+    position:absolute;
+    top:20px;
+    left:20px;
+    font-size:80px;
+    font-weight:900;
+    color:rgb(122, 87, 148);
+    z-index:2;
+}
+
+/* تدرج أسفل الصورة */
+.player-overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60%;
+    background:linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    z-index:1;
+}
+
+.player-details{
+    padding:20px;
+    text-align:center;
+}
+
+.player-details h3{
+    color:rgb(122, 87, 148);
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.player-details p{
+    color:#bbb;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+    .player-img{height:300px;}
+}
+
+@media(max-width:768px){
+    .player-img{height:260px;}
+}
+
+@media(max-width:480px){
+    .player-img{height:220px;}
+    .player-num{font-size:60px;}
+}
+
+/* ===== SQUAD SECTIONS ===== */
+.squad-section{
+    margin-bottom:70px;
+}
+
+.squad-section h2{
+    text-align:center;
+    color:rgb(122, 87, 148);
+    margin-bottom:30px;
+    font-size:28px;
+    position:relative;
+}
+
+.squad-section h2::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:3px;
+    background:rgb(122, 87, 148);
+    margin:10px auto 0;
+}
+
+
+
   
 
 
