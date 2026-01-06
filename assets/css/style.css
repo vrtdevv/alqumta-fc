@@ -8,9 +8,9 @@ header{background:#000;position:relative;width:100%;}
 .logo{color:gold;font-size:32px;font-weight:bold;}
 
 /* NAVIGATION */
-.nav-list{display:flex;list-style:none;}
-.nav-list li{margin-left:25px;}
-.nav-list li a{color:#fff;text-decoration:none;font-weight:bold;padding:10px 5px;display:block;transition:0.3s;}
+.nav-list {list-style:none;display:flex;}
+.nav-list li {margin-left:20px;}
+.nav-list li a{text-decoration:none;color:#fff;transition:0.3s;}
 .nav-list li a:hover{color:gold;}
 .menu-toggle{display:none;font-size:28px;color:gold;cursor:pointer;}
 
