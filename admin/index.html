@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | Al-Qumta FC</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+body{background:#0b0b0b;color:#fff;font-family:Arial,sans-serif;margin:0;padding:0;}
+.container{max-width:1200px;margin:50px auto;padding:20px;background:#111;border-radius:10px;}
+h2,h3{color:gold;text-align:center;margin-bottom:20px;}
+input, select, textarea, button{width:100%;padding:10px;margin-top:5px;border-radius:5px;border:1px solid #222;background:#000;color:#fff;}
+button{background:gold;color:#000;font-weight:bold;cursor:pointer;transition:.3s;margin-top:10px;}
+button:hover{background:#e5c100;}
+.table-container{overflow-x:auto;margin-top:20px;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:12px;border-bottom:1px solid #222;color:#fff;text-align:left;}
+th{color:gold;}
+.action-btn{color:gold;cursor:pointer;margin-right:10px;}
+.role{color: gold;font-size: 12px;font-weight: bold;text-transform: uppercase;margin-bottom: 5px;}
+.captain{display:inline-block;background: gold;color: #000;font-size:12px;font-weight:bold;padding:2px 5px;border-radius:50%;margin-left:5px;vertical-align:middle;}
+#adminPanel{display:none;}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ===== LOGIN ===== -->
+<div id="loginForm">
+<h2>Admin Login</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="adminPanel">
+
+<h2>Admin Panel</h2>
+
+<!-- ===== PLAYERS ===== -->
+<div id="playersSection">
+<h3>Players Management</h3>
+<input type="text" id="playerName" placeholder="Player Name">
+<input type="text" id="playerPosition" placeholder="Position">
+<select id="playerRole">
+    <option value="player">Player</option>
+    <option value="captain">Captain</option>
+    <option value="ceo">CEO</option>
+</select>
+<button onclick="addPlayer()">Add Player</button>
+
+<div class="table-container">
+<table id="playersTable">
+<tr><th>Name</th><th>Position</th><th>Role</th><th>Actions</th></tr>
+</table>
+</div>
+</div>
+
+<!-- ===== NEWS ===== -->
+<div id="newsSection" style="margin-top:40px;">
+<h3>News Management</h3>
+<input type="text" id="newsTitle" placeholder="News Title">
+<textarea id="newsContent" placeholder="Content"></textarea>
+<button onclick="addNews()">Add News</button>
+
+<div class="table-container">
+<table id="newsTable">
+<tr><th>Title</th><th>Content</th><th>Actions</th></tr>
+</table>
+</div>
+</div>
+
+<!-- ===== MENU ===== -->
+<div id="menuSection" style="margin-top:40px;">
+<h3>Menu Management</h3>
+<input type="text" id="menuTitle" placeholder="Menu Title">
+<input type="text" id="menuLink" placeholder="Link (e.g., index.html)">
+<button onclick="addMenu()">Add Menu Item</button>
+
+<div class="table-container">
+<table id="menuTable">
+<tr><th>Title</th><th>Link</th><th>Actions</th></tr>
+</table>
+</div>
+</div>
+
+<!-- ===== MATCHES ===== -->
+<div id="matchesSection" style="margin-top:40px;">
+<h3>Matches Management</h3>
+<input type="text" id="matchDate" placeholder="Date (dd/mm/yyyy)">
+<input type="text" id="matchOpponent" placeholder="Opponent">
+<input type="text" id="matchResult" placeholder="Result">
+<button onclick="addMatch()">Add Match</button>
+
+<div class="table-container">
+<table id="matchesTable">
+<tr><th>Date</th><th>Opponent</th><th>Result</th><th>Actions</th></tr>
+</table>
+</div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<div id="contactSection" style="margin-top:40px;">
+<h3>Contact Info</h3>
+<input type="text" id="contactPhone" placeholder="Phone Number">
+<input type="text" id="contactEmail" placeholder="Email">
+<button onclick="updateContact()">Update Contact Info</button>
+
+<div id="contactDisplay" style="margin-top:10px;color:#ccc;">
+<p>Phone: <span id="dispPhone">+966123456789</span></p>
+<p>Email: <span id="dispEmail">info@alqumta.com</span></p>
+</div>
+</div>
+
+<!-- ===== FORMATION ===== -->
+<div id="formationSection" style="margin-top:40px;">
+<h3>Team Formation</h3>
+<input type="text" id="formationPlayer" placeholder="Player Name">
+<input type="text" id="formationPosition" placeholder="Position">
+<input type="text" id="formationImage" placeholder="Image URL">
+<input type="number" id="formationTop" placeholder="Top (%)">
+<input type="number" id="formationLeft" placeholder="Left (%)">
+<button onclick="addFormation()">Add to Formation</button>
+
+<div class="table-container">
+<table id="formationTable">
+<tr><th>Player</th><th>Position</th><th>Image</th><th>Top</th><th>Left</th><th>Actions</th></tr>
+</table>
+</div>
+</div>
+
+</div> <!-- adminPanel -->
+
+</div> <!-- container -->
+
+<!-- ===== SCRIPTS ===== -->
+<script src="../assets/js/users.js"></script>
+<script>
+// ===== LOGIN =====
+function login(){
+    const userInput = document.getElementById('username').value;
+    const passInput = document.getElementById('password').value;
+
+    const user = users.find(u => u.username === userInput && u.password === passInput);
+
+    if(user){
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        showSectionsByRole(user.role);
+    } else {
+        alert("Username or Password incorrect!");
+    }
+}
+
+// ===== ROLE PERMISSIONS =====
+function showSectionsByRole(role){
+    const sections = {
+        players: document.getElementById('playersSection'),
+        news: document.getElementById('newsSection'),
+        menu: document.getElementById('menuSection'),
+        matches: document.getElementById('matchesSection'),
+        contact: document.getElementById('contactSection'),
+        formation: document.getElementById('formationSection')
+    };
+
+    if(role === 'ceo'){
+        for(let sec in sections) sections[sec].style.display = 'block';
+    } 
+    else if(role === 'admin'){
+        sections.players.style.display = 'none';
+        sections.news.style.display = 'block';
+        sections.menu.style.display = 'none';
+        sections.matches.style.display = 'none';
+        sections.contact.style.display = 'none';
+        sections.formation.style.display = 'block'; // يمكن تغييره حسب الصلاحيات
+    }
+}
+
+// ===== PLAYERS =====
+let players=[];
+function addPlayer(){
+    const name=document.getElementById('playerName').value;
+    const position=document.getElementById('playerPosition').value;
+    const role=document.getElementById('playerRole').value;
+    if(name && position){players.push({name,position,role});renderPlayers();}
+    document.getElementById('playerName').value='';
+    document.getElementById('playerPosition').value='';
+    document.getElementById('playerRole').value='player';
+}
+function renderPlayers(){
+    const table=document.getElementById('playersTable');
+    table.innerHTML=`<tr><th>Name</th><th>Position</th><th>Role</th><th>Actions</th></tr>`;
+    players.forEach((p,i)=>{
+        table.innerHTML+=`<tr>
+        <td>${p.role==='ceo'?'<b>CEO</b><br>':''}${p.name} ${p.role==='captain'?'<span class="captain">C</span>':''}</td>
+        <td>${p.position}</td>
+        <td>${p.role}</td>
+        <td><span class="action-btn" onclick="editPlayer(${i})">Edit</span><span class="action-btn" onclick="deletePlayer(${i})">Delete</span></td>
+        </tr>`;
+    });
+}
+function deletePlayer(i){players.splice(i,1);renderPlayers();}
+function editPlayer(i){
+    const p=players[i];
+    const newName=prompt("Edit Name:",p.name);
+    const newPosition=prompt("Edit Position:",p.position);
+    const newRole=prompt("Edit Role (player/captain/ceo):",p.role);
+    if(newName && newPosition && newRole){players[i]={name:newName,position:newPosition,role:newRole};renderPlayers();}
+}
+
+// ===== NEWS =====
+let newsArr=[];
+function addNews(){
+    const title=document.getElementById('newsTitle').value;
+    const content=document.getElementById('newsContent').value;
+    if(title && content){newsArr.push({title,content});renderNews();}
+    document.getElementById('newsTitle').value='';
+    document.getElementById('newsContent').value='';
+}
+function renderNews(){
+    const table=document.getElementById('newsTable');
+    table.innerHTML=`<tr><th>Title</th><th>Content</th><th>Actions</th></tr>`;
+    newsArr.forEach((n,i)=>{
+        table.innerHTML+=`<tr>
+        <td>${n.title}</td><td>${n.content}</td>
+        <td><span class="action-btn" onclick="editNews(${i})">Edit</span><span class="action-btn" onclick="deleteNews(${i})">Delete</span></td>
+        </tr>`;
+    });
+}
+function deleteNews(i){newsArr.splice(i,1);renderNews();}
+function editNews(i){
+    const n=newsArr[i];
+    const newTitle=prompt("Edit Title:",n.title);
+    const newContent=prompt("Edit Content:",n.content);
+    if(newTitle && newContent){newsArr[i]={title:newTitle,content:newContent};renderNews();}
+}
+
+// ===== MENU =====
+let menuArr=[];
+function addMenu(){
+    const title=document.getElementById('menuTitle').value;
+    const link=document.getElementById('menuLink').value;
+    if(title && link){menuArr.push({title,link});renderMenu();}
+    document.getElementById('menuTitle').value='';
+    document.getElementById('menuLink').value='';
+}
+function renderMenu(){
+    const table=document.getElementById('menuTable');
+    table.innerHTML=`<tr><th>Title</th><th>Link</th><th>Actions</th></tr>`;
+    menuArr.forEach((m,i)=>{
+        table.innerHTML+=`<tr>
+        <td>${m.title}</td><td>${m.link}</td>
+        <td><span class="action-btn" onclick="editMenu(${i})">Edit</span><span class="action-btn" onclick="deleteMenu(${i})">Delete</span></td>
+        </tr>`;
+    });
+}
+function deleteMenu(i){menuArr.splice(i,1);renderMenu();}
+function editMenu(i){
+    const m=menuArr[i];
+    const newTitle=prompt("Edit Title:",m.title);
+    const newLink=prompt("Edit Link:",m.link);
+    if(newTitle && newLink){menuArr[i]={title:newTitle,link:newLink};renderMenu();}
+}
+
+// ===== MATCHES =====
+let matches=[];
+function addMatch(){
+    const date=document.getElementById('matchDate').value;
+    const opponent=document.getElementById('matchOpponent').value;
+    const result=document.getElementById('matchResult').value;
+    if(date && opponent && result){matches.push({date,opponent,result});renderMatches();}
+    document.getElementById('matchDate').value='';
+    document.getElementById('matchOpponent').value='';
+    document.getElementById('matchResult').value='';
+}
+function renderMatches(){
+    const table=document.getElementById('matchesTable');
+    table.innerHTML=`<tr><th>Date</th><th>Opponent</th><th>Result</th><th>Actions</th></tr>`;
+    matches.forEach((m,i)=>{
+        table.innerHTML+=`<tr>
+        <td>${m.date}</td><td>${m.opponent}</td><td>${m.result}</td>
+        <td><span class="action-btn" onclick="editMatch(${i})">Edit</span><span class="action-btn" onclick="deleteMatch(${i})">Delete</span></td>
+        </tr>`;
+    });
+}
+function deleteMatch(i){matches.splice(i,1);renderMatches();}
+function editMatch(i){
+    const m=matches[i];
+    const newDate=prompt("Edit Date:",m.date);
+    const newOpponent=prompt("Edit Opponent:",m.opponent);
+    const newResult=prompt("Edit Result:",m.result);
+    if(newDate && newOpponent && newResult){matches[i]={date:newDate,opponent:newOpponent,result:newResult};renderMatches();}
+}
+
+// ===== CONTACT =====
+function updateContact(){
+    const phone=document.getElementById('contactPhone').value;
+    const email=document.getElementById('contactEmail').value;
+    if(phone){document.getElementById('dispPhone').innerText=phone;}
+    if(email){document.getElementById('dispEmail').innerText=email;}
+    document.getElementById('contactPhone').value='';
+    document.getElementById('contactEmail').value='';
+}
+
+// ===== FORMATION =====
+function addFormation(){
+    const player=document.getElementById('formationPlayer').value;
+    const position=document.getElementById('formationPosition').value;
+    const image=document.getElementById('formationImage').value;
+    const top=parseInt(document.getElementById('formationTop').value)||0;
+    const left=parseInt(document.getElementById('formationLeft').value)||0;
+    if(player && position){
+        formation.push({player,position,image,top,left});
+        renderFormation();
+        document.getElementById('formationPlayer').value='';
+        document.getElementById('formationPosition').value='';
+        document.getElementById('formationImage').value='';
+        document.getElementById('formationTop').value='';
+        document.getElementById('formationLeft').value='';
+    }
+}
+
+function renderFormation(){
+    const table=document.getElementById('formationTable');
+    table.innerHTML=`<tr><th>Player</th><th>Position</th><th>Image</th><th>Top</th><th>Left</th><th>Actions</th></tr>`;
+    formation.forEach((f,i)=>{
+        table.innerHTML+=`<tr>
+        <td>${f.player}</td>
+        <td>${f.position}</td>
+        <td>${f.image?`<img src="${f.image}" style="width:50px;height:50px;border-radius:50%;">`:''}</td>
+        <td>${f.top}%</td>
+        <td>${f.left}%</td>
+        <td>
+          <span class="action-btn" onclick="editFormation(${i})">Edit</span>
+          <span class="action-btn" onclick="deleteFormation(${i})">Delete</span>
+        </td>
+        </tr>`;
+    });
+}
+
+function editFormation(i){
+    const f=formation[i];
+    const newPlayer=prompt("Edit Player:",f.player);
+    const newPosition=prompt("Edit Position:",f.position);
+    const newImage=prompt("Edit Image URL:",f.image);
+    const newTop=parseInt(prompt("Edit Top (%)",f.top));
+    const newLeft=parseInt(prompt("Edit Left (%)",f.left));
+    if(newPlayer && newPosition){
+        formation[i]={player:newPlayer,position:newPosition,image:newImage,top:newTop,left:newLeft};
+        renderFormation();
+    }
+}
+
+function deleteFormation(i){formation.splice(i,1);renderFormation();}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Qumta FC | Formation</title>
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial,sans-serif;background:#0b0b0b;color:#fff;line-height:1.6;}
+a{text-decoration:none;color:#fff;transition:0.3s;}
+a:hover{color:gold;}
+
+/* ===== HEADER ===== */
+.header-container {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  background:#111;
+  flex-wrap:wrap;
+}
+.logo {
+  color:gold;
+  font-size:1.8rem;
+}
+.nav-list {
+  list-style:none;
+  display:flex;
+}
+.nav-list li {
+  margin-left:20px;
+}
+.nav-list li a {
+  font-weight:bold;
+}
+.menu-toggle {
+  display:none;
+  font-size:2rem;
+  color:gold;
+  cursor:pointer;
+}
+
+/* ===== PITCH ===== */
+main{padding:20px;text-align:center;}
+#pitch{
+  position:relative;
+  width:100%;
+  max-width:800px;
+  margin:20px auto;
+  background:url('assets/images/pitch.jpg') no-repeat center/cover;
+  height:500px;
+  border:2px solid #222;
+  border-radius:10px;
+}
+.player{
+  position:absolute;
+  text-align:center;
+  cursor:pointer;
+  transform:translate(-50%,-50%);
+}
+.player img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:2px solid gold;
+}
+.player-name{
+  color:gold;font-weight:bold;font-size:14px;margin-top:5px;
+}
+.player-pos{
+  color:#ccc;font-size:12px;
+}
+.message{
+  color:#ccc;font-size:18px;margin-top:20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:768px){
+  .menu-toggle{display:block;}
+  .nav-list{
+    width:100%;
+    max-height:0;
+    overflow:hidden;
+    flex-direction:column;
+    transition:max-height 0.3s ease-in;
+  }
+  .nav-list.active{max-height:500px;}
+  .nav-list li{margin:10px 0;}
+  #pitch{height:350px;}
+  .player img{width:40px;height:40px;}
+  .player-name{font-size:12px;}
+  .player-pos{font-size:10px;}
+}
+@media (max-width:480px){
+  #pitch{height:250px;}
+  .player img{width:30px;height:30px;}
+  .player-name{font-size:10px;}
+  .player-pos{font-size:9px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1 class="logo">Al-Qumta FC</h1>
+    <div class="menu-toggle" id="mobile-menu">☰</div>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="squad.html">Squad</a></li>
+      <li><a href="matches.html">Matches</a></li>
+      <li><a href="formation.html">Formation</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<h2>Team Formation</h2>
+<div id="pitch"></div>
+<div id="message" class="message">لم تنزل التشكيلة بعد</div>
+</main>
+
+<script>
+// ===== MENU MOBILE TOGGLE =====
+const menuToggle = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+menuToggle.addEventListener('click',()=>{navList.classList.toggle('active');});
+
+// ===== FORMATION DATA =====
+let formation=[
+  //{player:'أنس العنزي',position:'مهاجم',image:'assets/images/player1.jpg',top:10,left:50},
+  //{player:'أسامه العنزي',position:'مهاجم',image:'assets/images/player1.jpg',top:30,left:40},
+  //{player:'ثامر العنزي',position:'خط الوسط',image:'assets/images/player1.jpg',top:50,left:50},
+  //{player:'بدر العنزي',position:'خط الوسط',image:'assets/images/player1.jpg',top:50,left:60},
+  //{player:'إياد العنزي',position:'مدافع',image:'assets/images/player1.jpg',top:70,left:40},
+  //{player:'أصيل العنزي',position:'مدافع',image:'assets/images/player1.jpg',top:70,left:60},
+  //{player:'ريان العنزي',position:'مدافع',image:'assets/images/player1.jpg',top:90,left:35},
+  //{player:'عبدالله العنزي',position:'مدافع',image:'assets/images/player1.jpg',top:90,left:65}
+];
+
+const pitch=document.getElementById('pitch');
+const message=document.getElementById('message');
+
+// ===== RENDER FORMATION =====
+function renderFormationPage(){
+  pitch.innerHTML='';
+  if(formation.length===0){message.style.display='block';return;}
+  message.style.display='none';
+  formation.forEach(f=>{
+    const div=document.createElement('div');
+    div.className='player';
+    div.style.top=f.top+'%';
+    div.style.left=f.left+'%';
+    div.innerHTML=`<img src="${f.image}" alt="${f.player}">
+                   <div class="player-name">${f.player}</div>
+                   <div class="player-pos">${f.position}</div>`;
+    pitch.appendChild(div);
+  });
+}
+
+renderFormationPage();
+</script>
+
+</body>
+</html>
