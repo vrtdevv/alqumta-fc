@@ -336,6 +336,83 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
     }
 }
 
+/* ===== STATS TABLE ===== */
+.stats-table-section{
+    padding:60px 20px;
+    background:#0b0b0b;
+}
+
+.section-title{
+    text-align:center;
+    color:#ffffff;
+    margin-bottom:40px;
+    font-size:32px;
+}
+
+.stats-table{
+    max-width:1000px;
+    margin:auto;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgb(122,87,148);
+}
+
+.stats-header,
+.stats-row{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    align-items:center;
+    text-align:center;
+    padding:16px;
+}
+
+.stats-header{
+    background:rgb(122,87,148);
+    color:#fff;
+    font-weight:bold;
+}
+
+.stats-row{
+    background:#1a1320;
+    color:#ddd;
+    border-top:1px solid #2a1f35;
+}
+
+.stats-row:nth-child(even){
+    background:#22182b;
+}
+
+.stats-row.top{
+    background:linear-gradient(135deg,#2a1f35,#2a1f35);
+    color:#ffffff;
+    font-weight:bold;
+}
+
+.stats-row span:first-child{
+    text-align:right;
+    padding-right:10px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+    .stats-header{
+        display:none;
+    }
+
+    .stats-row{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .stats-row span:first-child{
+        grid-column:1 / -1;
+        font-weight:bold;
+        margin-bottom:8px;
+        text-align:center;
+    }
+}
+
+
+
 
 
 
