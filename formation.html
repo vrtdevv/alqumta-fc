@@ -59,12 +59,8 @@ main{padding:20px;text-align:center;}
   width:100%;
   max-width:800px;
   margin:20px auto;
-
-  /* الحل السحري */
-  aspect-ratio: 9 / 16;   /* للجوال */
-  background:url('assets/images/pitch.jpg') no-repeat center;
-  background-size: contain;
-
+  background:url('assets/images/7.png') no-repeat center/cover;
+  height:1150px;
   border:2px solid #222;
   border-radius:10px;
 }
@@ -134,11 +130,9 @@ main{padding:20px;text-align:center;}
 </header>
 
 <main>
-    <h2>تشكيلة الفريق</h2>
-
-    <div class="formation-image-wrapper">
-    <img src="assets/images/7.png" class="formation-image" alt="التشكيلة">
-</div>
+<h2>تشكيلة الفريق</h2>
+<div id="pitch"></div>
+<div id="message" class="message"></div>
 </main>
 
 <script>
@@ -185,9 +179,3 @@ renderFormationPage();
 
 </body>
 </html>
-
-
-
-
-
-

@@ -401,40 +401,6 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
     }
 }
 
-/* ===== FORMATION IMAGE ===== */
-.formation-image-wrapper{
-  width:100%;
-  max-width:900px;
-  margin:20px auto;
-  padding:0 12px;
-}
-
-.formation-image{
-  width:100%;
-  height:auto;
-  display:block;
-  object-fit:contain;
-  border-radius:12px;
-}
-
-/* ===== MOBILE FIX ===== */
-@media (max-width:768px){
-  .formation-image-wrapper{
-    max-width:100%;
-    padding:0 8px;
-  }
-
-  .formation-image{
-    max-height:80vh; /* هذا المهم */
-  }
-}
-
-@media (max-width:480px){
-  .formation-image{
-    max-height:70vh;
-  }
-}
-
 
 
 
@@ -444,10 +410,6 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
 
 
   
-
-
-
-
 
 
 
