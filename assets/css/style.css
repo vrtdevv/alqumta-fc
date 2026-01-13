@@ -401,6 +401,24 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
     }
 }
 
+/* ===== FORMATION IMAGE FIX ===== */
+.formation-section{
+    width:100%;
+    padding:30px 15px;
+    display:flex;
+    justify-content:center;
+    background:#0b0b0b;
+}
+
+.formation-image{
+    width:100%;
+    max-width:700px;   /* مهم: يخليها مناسبة للجوال */
+    height:auto;       /* أهم سطر: يمنع القص */
+    object-fit:contain;
+    border-radius:16px;
+    box-shadow:0 0 20px rgba(122,87,148,0.6);
+}
+
 
 
 
@@ -410,6 +428,7 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
 
 
   
+
 
 
 
