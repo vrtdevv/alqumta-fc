@@ -401,24 +401,37 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
     }
 }
 
-/* ===== FORMATION IMAGE CLEAN SIZE ===== */
+/* ===== FORMATION IMAGE ===== */
 .formation-image-wrapper{
-  max-width:900px;          /* عرض الصفحة الطبيعي */
-  margin:20px auto;         /* توسيط */
-  padding:0 10px;
+  width:100%;
+  max-width:900px;
+  margin:20px auto;
+  padding:0 12px;
 }
 
 .formation-image{
   width:100%;
-  height:auto;              /* لا تكبير */
+  height:auto;
   display:block;
-  border-radius:10px;
+  object-fit:contain;
+  border-radius:12px;
 }
 
-/* موبايل */
+/* ===== MOBILE FIX ===== */
 @media (max-width:768px){
   .formation-image-wrapper{
     max-width:100%;
+    padding:0 8px;
+  }
+
+  .formation-image{
+    max-height:80vh; /* هذا المهم */
+  }
+}
+
+@media (max-width:480px){
+  .formation-image{
+    max-height:70vh;
   }
 }
 
@@ -431,6 +444,7 @@ footer{background:#000;padding:20px;text-align:center;border-top:1px solid rgb(1
 
 
   
+
 
 
 
