@@ -59,8 +59,8 @@ main{padding:20px;text-align:center;}
   width:100%;
   max-width:800px;
   margin:20px auto;
-  background:url('assets/images/pitch.jpg') no-repeat center/cover;
-  height:500px;
+  background:url('assets/images/7.png') no-repeat center/cover;
+  height:1150px;
   border:2px solid #222;
   border-radius:10px;
 }
@@ -98,13 +98,13 @@ main{padding:20px;text-align:center;}
   }
   .nav-list.active{max-height:500px;}
   .nav-list li{margin:10px 0;}
-  #pitch{height:350px;}
+  #pitch{height:500px;}
   .player img{width:40px;height:40px;}
   .player-name{font-size:12px;}
   .player-pos{font-size:10px;}
 }
 @media (max-width:480px){
-  #pitch{height:250px;}
+  #pitch{height:500px;}
   .player img{width:30px;height:30px;}
   .player-name{font-size:10px;}
   .player-pos{font-size:9px;}
@@ -132,7 +132,7 @@ main{padding:20px;text-align:center;}
 <main>
 <h2>تشكيلة الفريق</h2>
 <div id="pitch"></div>
-<div id="message" class="message">لم تنزل التشكيلة بعد</div>
+<div id="message" class="message"></div>
 </main>
 
 <script>
@@ -143,14 +143,14 @@ menuToggle.addEventListener('click',()=>{navList.classList.toggle('active');});
 
 // ===== FORMATION DATA =====
 let formation=[
-  {player:'حمد نايف',position:'',image:'assets/images/player1.jpg',top:65,left:50},
-  {player:'أسامه العنزي',position:'',image:'assets/images/player1.jpg',top:20,left:50},
-  {player:'ثامر العنزي',position:'',image:'assets/images/player1.jpg',top:40,left:15},
-  {player:'بدر العنزي',position:'',image:'assets/images/player1.jpg',top:42,left:50},
-  {player:'إياد العنزي',position:'',image:'assets/images/player1.jpg',top:70,left:25},
-  {player:'أصيل العنزي',position:'',image:'assets/images/player1.jpg',top:40,left:85},
-  {player:'ريان العنزي',position:'C',image:'assets/images/player1.jpg',top:72,left:75},
-  {player:'عبدالعزيز فيصل',position:'',image:'assets/images/player1.jpg',top:85,left:50},
+  //{player:'حمد نايف',position:'',image:'assets/images/player1.jpg',top:65,left:50},
+  //{player:'أسامه العنزي',position:'',image:'assets/images/player1.jpg',top:20,left:50},
+  //{player:'ثامر العنزي',position:'',image:'assets/images/player1.jpg',top:40,left:15},
+  //{player:'بدر العنزي',position:'',image:'assets/images/player1.jpg',top:42,left:50},
+  //{player:'إياد العنزي',position:'',image:'assets/images/player1.jpg',top:70,left:25},
+  //{player:'أصيل العنزي',position:'',image:'assets/images/player1.jpg',top:40,left:85},
+  //{player:'ريان العنزي',position:'C',image:'assets/images/player1.jpg',top:72,left:75},
+  //{player:'عبدالعزيز فيصل',position:'',image:'assets/images/player1.jpg',top:85,left:50},
   //{player:'ياسر العنزي',position:'حارس مرمى',image:'assets/images/player1.jpg',top:90,left:50}
 ];
 
