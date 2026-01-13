@@ -59,8 +59,12 @@ main{padding:20px;text-align:center;}
   width:100%;
   max-width:800px;
   margin:20px auto;
-  background:url('assets/images/pitch.jpg') no-repeat center/cover;
-  height:500px;
+
+  /* الحل السحري */
+  aspect-ratio: 9 / 16;   /* للجوال */
+  background:url('assets/images/pitch.jpg') no-repeat center;
+  background-size: contain;
+
   border:2px solid #222;
   border-radius:10px;
 }
@@ -181,6 +185,7 @@ renderFormationPage();
 
 </body>
 </html>
+
 
 
 
