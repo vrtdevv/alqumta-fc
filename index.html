@@ -304,8 +304,8 @@ footer b{color:var(--purple3);font-weight:700;}
       <div class="pcard"><div class="pcard-photo"><div class="num-badge">15</div><img src="assets/images/players/rayan.jpg" alt="ريان" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="no-photo" style="display:none"><span>⚽</span></div></div><div class="pcard-info"><div class="pcard-name">ريان العنزي</div><div class="pcard-pos">مدافع</div></div></div>
       <div class="pcard"><div class="pcard-photo"><div class="num-badge">4</div><div class="no-photo"><span>⚽</span></div></div><div class="pcard-info"><div class="pcard-name">حمد نايف</div><div class="pcard-pos">مدافع</div></div></div>
       <div class="pcard"><div class="pcard-photo"><div class="num-badge">2</div><div class="cap-badge">C</div><img src="assets/images/players/abdallah.jpg" alt="عبدالله" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="no-photo" style="display:none"><span>⚽</span></div></div><div class="pcard-info"><div class="pcard-name">عبدالله العنزي</div><div class="pcard-pos">مدافع · الكابتن</div></div></div>
-      <div class="pcard"><div class="pcard-photo"><div class="num-badge">1</div><div class="no-photo"><span>🧤</span></div></div><div class="pcard-info"><div class="pcard-name">عمر العنزي</div><div class="pcard-pos">حارس مرمى</div></div></div>
-      <div class="pcard"><div class="pcard-photo"><div class="num-badge">92</div><div class="no-photo"><span>🧤</span></div></div><div class="pcard-info"><div class="pcard-name">أحمد العنزي</div><div class="pcard-pos">حارس مرمى</div></div></div>
+      <div class="pcard"><div class="pcard-photo"><div class="num-badge">1</div><div class="no-photo"><span>🧤</span></div></div><div class="pcard-info"><div class="pcard-name">ياسر العنزي</div><div class="pcard-pos">حارس مرمى</div></div></div>
+      <div class="pcard"><div class="pcard-photo"><div class="num-badge">92</div><div class="no-photo"><span>🧤</span></div></div><div class="pcard-info"><div class="pcard-name">عمر العنزي</div><div class="pcard-pos">حارس مرمى</div></div></div>
     </div>
   </div>
 </div>
@@ -384,7 +384,7 @@ function go(id){
 function toggleMenu(){document.getElementById('mob-nav').classList.toggle('open');}
 function closeMenu(){document.getElementById('mob-nav').classList.remove('open');}
 const lineup=[
-  {name:'عمر',img:'',top:91,left:50},
+  {name:'ياسر',img:'',top:91,left:50},
   {name:'إياد',img:'assets/images/players/eyad.jpg',top:74,left:75},
   {name:'أصيل',img:'assets/images/players/assel.jpg',top:74,left:25},
   {name:'ريان',img:'assets/images/players/rayan.jpg',top:74,left:50},
@@ -398,7 +398,7 @@ const lineup=[
   lineup.forEach(p=>{
     const d=document.createElement('div');
     d.className='pp';d.style.top=p.top+'%';d.style.left=p.left+'%';
-    const icon=p.name==='عمر'?'🧤':'⚽';
+    const icon=p.name==='ياسر'?'🧤':'⚽';
     const img=p.img
       ?`<img class="pp-av" src="${p.img}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="pp-blank" style="display:none">${icon}</div>`
       :`<div class="pp-blank">${icon}</div>`;
